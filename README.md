@@ -1,0 +1,2 @@
+# JavaSchoolStarter
+My test project
