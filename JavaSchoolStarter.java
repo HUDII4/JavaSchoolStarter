@@ -25,9 +25,10 @@ public class JavaSchoolStarter {
            int index = request.indexOf("Where");
            request = request.substring(14, index);
            if (data.contains(row.containsKey("'active'")) && data.contains(row.containsValue(("true")))){
-           for (String pair1 : request.split(", ")) {
+           for (String pair1 : request.split(" ")) {
                String[] keyValue = pair1.split("=");
-                  row.replace(keyValue[0], String.valueOf(keyValue[1]));
+                Object obj = keyValue[1];
+                  row.replace(keyValue[0], obj);
                }
                }
        }else if (request.startsWith("DELETE")) {
@@ -36,7 +37,8 @@ public class JavaSchoolStarter {
            if (data.contains(row.containsKey("'active'")) && data.contains(row.containsValue(("true")))){
            for (String pair1 : request.split(", ")) {
                String[] keyValue = pair1.split("=");
-                  row.remove(keyValue[0], String.valueOf(keyValue[1]));
+              Object obj = keyValue[1];
+                  row.remove(keyValue[0], obj);
                }
                }
        }
