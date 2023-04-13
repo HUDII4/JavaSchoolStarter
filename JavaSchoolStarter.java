@@ -10,16 +10,17 @@ public class JavaSchoolStarter {
    }
 
   public List<Map<String, Object>> execute(String request)throws Exeption{
-       Map<String,Object> row = new HashMap<>();
-       List<Map<String, Object>> data = new ArrayList<>();
-       if (request.startsWith("INSERT VALUES")) {
-           request = request.substring(14, request.length());
-           String[] pairs =request.split(", ");
-           for (String pair : pairs) {
-               String[] keyValue = pair.split(" = ");
-               row.put(keyValue[0], String.valueOf(keyValue[1]));
-           }
-           data.add(row);
+       Map<String, Object> row = new HashMap<>();
+        List<Map<String, Object>> data = new ArrayList<>();
+        Set<Map.Entry<String, Object>> entryRow = row.entrySet();
+        if (req.startsWith("INSERT VALUES")){
+            req = req.substring(14, req.length());
+            for (String pair : req.split(", ")){
+                String[] kv = pair.split("=");
+                Object obj = kv[1];
+                row.put(kv[0], obj);
+            }
+            data.add(row);
        } else if (request.startsWith("UPDATE VALUES")) {
            int index = request.indexOf("Where");
            request = request.substring(14, index);
